@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me Perdonas?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 50px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            position: relative;
+            transition: all 0.5s; /* Animación suave */
+        }
+        #yesBtn {
+            background-color: #4CAF50; /* Verde */
+        }
+        #noBtn {
+            background-color: #ff4d4d; /* Rojo */
+            z-index: 1; /* Asegurarse de que el botón "No" esté detrás inicialmente */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¿Me perdonas? 😔💔</h1>
+    <img src="https://images3.memedroid.com/images/UPLOADED719/65a74f94f170d.jpeg" alt="Imagen de disculpa" />
+    <p>Lo siento mucho, cometí un error. ¿Me perdonas?</p>
+    
+    <button class="btn" id="yesBtn">Sí</button>
+    <button class="btn" id="noBtn">No</button>
+    
+    <p id="questionText" style="display: none;"></p>
+    
+    <script>
+        let yesBtn = document.getElementById('yesBtn');
+        let noBtn = document.getElementById('noBtn');
+        let questionText = document.getElementById('questionText');
+        let yesBtnSize = 16; // Tamaño inicial del botón "Sí"
+
+        const questions = [
+            "¡¡vamos di que si!!",
+            "¿por favor si?",
+            "como de que no, di que si",
+            "¿me das otra oportunidad?",
+            "¿porfa si?"
+        ];
+
+        yesBtn.onclick = function() {
+            alert("muchas gracias, casi me doy por vencido");
+        };
+
+        noBtn.onclick = function() {
+            questionText.style.display = 'block';
+            const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+            questionText.textContent = randomQuestion; // Mostrar una pregunta aleatoria
+            yesBtnSize += 5; // Aumentar el tamaño del botón "Sí"
+            yesBtn.style.fontSize = yesBtnSize + 'px';
+
+            // Hacer que el botón "Sí" crezca y tape al botón "No"
+            yesBtn.style.transform = `scale(${(yesBtnSize / 16)})`; // Escalar el botón "Sí"
+            yesBtn.style.zIndex = 2; // Asegurarse de que el botón "Sí" esté encima
+        };
+    </script>
+
+</body>
+</html>
